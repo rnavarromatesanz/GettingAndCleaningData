@@ -1,0 +1,97 @@
+
+==================================================================
+Human Activity Recognition Using Smartphones Dataset
+Version 1.0
+==================================================================
+Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.
+Smartlab - Non Linear Complex Systems Laboratory
+DITEN - Università degli Studi di Genova.
+Via Opera Pia 11A, I-16145, Genoa, Italy.
+activityrecognition@smartlab.ws
+www.smartlab.ws
+==================================================================
+
+The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. 
+Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
+wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we 
+captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments 
+have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into 
+two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
+
+The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled 
+in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, 
+which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body 
+acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a 
+filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating 
+variables from the time and frequency domain. See 'features_info.txt' for more details. 
+
+INPUT FILES
+===========
+This are the input files used to the current project
+
+
+- 'train/subject_train.txt': Each row identifies the subject who performed the activity for each window sample. 
+  Its range is from 1 to 30. This values are numerical in order to protect the personal data.
+
+- 'train/X_train.txt': Training set.
+	This is table with 561 columns that identify every sample.
+	
+- 'train/y_train.txt': Training labels.
+	This file encloses the information about the activity, the content are numbers so this values will be updeted 
+	during the project to provide a descriptive name, the match between this code and the activity name ias indicated 
+	in the file 'activity_labels.txt' that will be explained later.
+
+- 'test/subject_test.txt': Each row identifies the subject who performed the activity for each window sample. 
+  Its range is from 1 to 30. This values are numerical in order to protect the personal data.
+
+- 'test/X_test.txt': Test set.
+	This is table with 561 columns that identify every sample
+
+- 'test/y_test.txt': Test labels.
+
+- 'activity_labels.txt': Links the class labels with their activity name. The values within the column values will be 
+	used to match with y_train.txt and y_test.txt
+	the column value i
+	VALUE  	|	ACTIVITY
+	----------------------------
+	1 	|	WALKING
+	2 	|	WALKING_UPSTAIRS
+	3 	|	WALKING_DOWNSTAIRS
+	4 	|	SITTING
+	5 	|	STANDING
+	6 	|	LAYING
+
+
+
+OUTPUT FILES OR DATA FRAMES
+===========================
+This are the output data frames or files generatedinput files used to the current project
+
+- 'MergedValues' This is the dataFrame that stores the information unified from the previous files, the content 
+hasn't been updated, the unique operation has been the merge
+	The estructure of this Data Frame can be understood as the join of each file in an specific 
+	position in the final dataFrame
+
+		subject_train	| 	y_train	|	x_train
+		-----------------------------------------------
+		subject_test	|	y_test	|	x_test
+	
+	Then the y_train and y_test are updeted in order to change the number that defines the activity for the activity 
+	name.
+	
+		subject_train	| 	Activity_name	|	x_train
+		--------------------------------------------------------
+		subject_test	|	Activity_name	|	x_test
+	
+-'meanValues' This arry store the information about the mean obtained from the 561 measures or attributes
+
+-'StandardDesviation' This arry store the information about the Standard Desviationn obtained from the 561 measures 
+or attributes
+
+-'meanValues' This Data Frame group the information by user and activity, and later a mean is calculated by each 
+group. The structure is really similar to the Data Frame Merged Values, although in this case the atributes has 
+been used to calculate the mean.
+	
+		subject_train	| 	Activity_name	|	mean(x_train)
+		--------------------------------------------------------
+		subject_test	|	Activity_name	|	mean(x_test)
